@@ -38,19 +38,35 @@ public class HibernateUtil {
 	public static void main(String... args){
 //		add();
 //		get();
-		update();
+//		update();
+		persistent();
+	}
+
+	private static void persistent() {
+		Session session=getSession();
+//		session.beginTransaction();
+		User user= new User();
+		user.setName("test3");
+		session.persist(user);
+//		session.save(user);
+		
+		System.out.println("do save");
+//		session.flush();
+//		session.getTransaction().commit();
+		session.close();
 		
 	}
 
 	private static void update() {
 		Session session=getSession();
 		session.beginTransaction();
-		User user=(User)session.get(User.class, new Integer(1));
+		User user=(User)session.get(User.class, new Integer(4));
 		System.out.println("do get");
-		user.setName("newname");
+		user.setName("newname111");
 		System.out.println("do setname");
-		session.flush();
-		System.out.println("do flush");
+//		session.flush();
+//		System.out.println("do flush");
+		
 		session.getTransaction().commit();
 		System.out.println("do commit");
 		session.close();
