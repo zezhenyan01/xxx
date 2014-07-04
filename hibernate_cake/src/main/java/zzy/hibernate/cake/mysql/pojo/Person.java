@@ -1,4 +1,5 @@
 package zzy.hibernate.cake.mysql.pojo;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,20 +11,23 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user")  
-public class User {
+@Table(name="person")  
+public class Person {
 	@Id
 	@GeneratedValue
 	private int id;
+	
+	
 		
 	@Column(name="name")
 	private String name;
-
-	@OneToOne(cascade = CascadeType.ALL)
+	
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumns( {
         @JoinColumn(name = "personid", referencedColumnName = "id"),
 	})
-	private Person person;
+	private User user;
+	
 	
 	public int getId() {
 		return id;
@@ -33,6 +37,7 @@ public class User {
 		this.id = id;
 	}
 
+	
 	public String getName() {
 		return name;
 	}
@@ -41,13 +46,13 @@ public class User {
 		this.name = name;
 	}
 
-	public Person getPerson() {
-		return person;
+	public User getUser() {
+		return user;
 	}
 
-	public void setPerson(Person person) {
-		this.person = person;
+	public void setUser(User user) {
+		this.user = user;
 	}
-	
+
 	
 }
