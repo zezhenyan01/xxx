@@ -1,0 +1,4 @@
+CREATE DATABASE `hibernate_cake` /*!40100 CHARACTER SET utf8 COLLATE utf8_general_ci */;
+
+
+CREATE TABLE `user` (  `id` INT(10) NOT NULL AUTO_INCREMENT,  `name` VARCHAR(200) NOT NULL DEFAULT '0',  PRIMARY KEY (`id`) ) COLLATE='utf8_general_ci' ENGINE=InnoDB ROW_FORMAT=DEFAULT;
