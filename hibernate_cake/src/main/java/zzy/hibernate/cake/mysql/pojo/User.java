@@ -2,6 +2,7 @@ package zzy.hibernate.cake.mysql.pojo;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -19,7 +20,7 @@ public class User {
 	@Column(name="name")
 	private String name;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumns( {
         @JoinColumn(name = "personid", referencedColumnName = "id"),
 	})
